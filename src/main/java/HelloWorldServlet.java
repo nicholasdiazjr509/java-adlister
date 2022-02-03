@@ -25,6 +25,7 @@ public class HelloWorldServlet extends HttpServlet {
 
         } else {
             out.println("<h1>" + name + "</h1>");
+//problems with this
         }
     }
 }
