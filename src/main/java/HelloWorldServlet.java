@@ -1,7 +1,8 @@
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.annotation.WebServlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -19,12 +20,11 @@ public class HelloWorldServlet extends HttpServlet {
         PrintWriter writer = res.getWriter();
 //        writer.println("<h1>" +title+"</h1>");
 
-        if(name == null){
+        if (name == null) {
             out.println("Hello World");
 
-        }else{
+        } else {
             out.println("<h1>" + name + "</h1>");
         }
-
     }
 }

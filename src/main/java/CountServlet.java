@@ -1,3 +1,4 @@
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,4 +17,8 @@ public class CountServlet extends HttpServlet {
         out.println("<h1>The count is: " + counter +".");
 
     }
+
+
+
+
 }
