@@ -2,30 +2,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static java.lang.System.out;
-
 @WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello")
 public class HelloWorldServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        res.setContentType("text/html");
-//       String title = "Hello World";
-
-        String name = req.getParameter("name");
-        PrintWriter writer = res.getWriter();
-//        writer.println("<h1>" +title+"</h1>");
-
-        if (name == null) {
-            out.println("Hello World");
-
-        } else {
-            out.println("<h1>" + name + "</h1>");
-//problems with this
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+        String name = request.getParameter("name");
+        PrintWriter writer = response.getWriter();
+        //out.println("<h1>" + title + "</h1>');
+//        response.getWriter().println("<h1>Hello, World!</h1>");
+    //BONUS DUDE
+        if(name == null) {
+            writer.println("Hello World!");
+        }else{
+            writer.println("<h1>Hello, " + name + "!</h1>");
         }
     }
 }
