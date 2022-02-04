@@ -13,7 +13,7 @@ public class HelloWorldServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         //out.println("<h1>" + title + "</h1>');
 //        response.getWriter().println("<h1>Hello, World!</h1>");
-    //BONUS DUDE
+        //BONUS DUDE
         if(name == null) {
             writer.println("Hello World!");
         }else{
