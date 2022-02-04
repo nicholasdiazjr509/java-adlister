@@ -33,7 +33,10 @@
     </c:when>
 </c:choose>
 </div>
+
 <jsp:include page="partials/scripts.jsp"/>
+<%----%>
+<%----%>
 <%--<form action = "/login.jsp" method="post">--%>
 <%--    <label for = "username">Email</label>--%>
 <%--    <input type="text" id="username" name="username">--%>
