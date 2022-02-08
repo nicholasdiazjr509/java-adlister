@@ -12,15 +12,21 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
+        if(request.getSession().getAttribute("user") != null{
+            response.sendRedirect("/profile");
+        }
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws IOException, ServletException{
-            if(request.getMethod().equalsIgnoreCase("post")){
+//            if(request.getMethod().equalsIgnoreCase("post")){
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
+
+                User user = DaoFactory.getUsersDao().findByUsername(username);
+
                 if(username.equals("admin") && password.equals("password")){
                     response.sendRedirect("/profile");
                 }else{
@@ -29,4 +35,4 @@ public class LoginServlet extends HttpServlet {
             }
 
     }
-}
+
