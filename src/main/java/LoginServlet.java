@@ -42,10 +42,10 @@ public class LoginServlet extends HttpServlet {
 
                     Cookie message = new Cookie("message", "Welcome");
                     response.addCookie(message);
-                    response.sendRedirect("/profile");
+                    response.sendRedirect("/profile.jsp");
 
                 }else{
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/login");
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/login");
                     PrintWriter out = response.getWriter();
                     System.out.println("<font color=red> Either username or password is wrong.</font>");
                     response.sendRedirect("/login");
