@@ -1,83 +1,34 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nicholasdiazjr
-  Date: 2/3/22
-  Time: 4:58 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="java.util.Arrays"%>
+<%--<%--%>
+<%--    if (request.getMethod().equalsIgnoreCase("post")) {--%>
+<%--        String username = request.getParameter("username");--%>
+<%--        String password = request.getParameter("password");--%>
+<%--        if (username.equals("admin") && password.equals("password")) {--%>
+<%--            response.sendRedirect("/profile");--%>
+<%--        }--%>
+<%--    }--%>
+<%--%>--%>
 <html>
 <head>
-    <title><%= "Welcome" %></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <jsp:include page="/partials/head.jsp">
+        <jsp:param name="title" value="Please Log In" />
+    </jsp:include>
 </head>
 <body>
-<%@include file="partials/navbar.jsp"%>
-<%! String name = "Jay"; %>
-<%
-    int[] numbers = {1, 2 ,3, 4, 5};
-    int total = 0;
-    for (int num : numbers) {
-        total += num;
-    }
-    int avg = total / numbers.length;
-    request.setAttribute("numbers", numbers);
-%>
-
-<c:choose>
-    <c:when test="${param.condition}">
-        <h1>The statement evaluates to true.</h1>
-    </c:when>
-    <c:when test="${param.numbers}">
-        <h1>This time, I wanna show you some numbers. 1, 2, 3, 4, 5!</h1>
-    </c:when >
-    <%--Otherwise tags are optional.--%>
-    <c:otherwise>
-        <c:choose>
-            <c:when test="true">
-                <h1>test</h1>
-            </c:when>
-        </c:choose>
-        <h1>The statements evaluates to false.</h1>
-    </c:otherwise>
-</c:choose>
-
-<c:if test="">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur culpa dignissimos iusto minus nulla provident quae quos sed sint ullam!</p>
-</c:if>
-
-<c:forEach items="${numbers}" var="num">
-    <ul>
-        <li>${num}</li>
-    </ul>
-</c:forEach>
-
-
-
-
-<h1>Hello <%= avg %></h1>
-
-<h1>Welcome To The Site!</h1>
-<p>Path: <%= request.getRequestURL() %></p>
-<p>Query String: <%= request.getQueryString() %></p>
-<p>"name" parameter: <%= request.getParameter("name") %></p>
-<p>"method" attribute: <%= request.getMethod() %></p>
-<p>User-Agent header: <%= request.getHeader("user-agent") %></p>
-
-<%--Used for singular parameters--%>
-<h4>${param.name}</h4>
-<%--Used for multiple values in one parameter--%>
-<h4>${paramValues.name}</h4>
-<h4>${Arrays.toString(numbers)}</h4>
-
-
-
-
-<!--HTML COMMENT-->
-<%--JSP COMMENT--%>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <jsp:include page="/partials/navbar.jsp" />
+    <div class="container">
+        <h1>Please Log In</h1>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" name="username" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" class="form-control" type="password">
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+        </form>
+    </div>
 </body>
 </html>
