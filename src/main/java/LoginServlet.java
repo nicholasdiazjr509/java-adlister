@@ -14,13 +14,14 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        if(request.getSession().getAttribute("user") != null){
+            throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
+        } else {
+            //missing the else
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws IOException, ServletException{
@@ -41,10 +42,10 @@ public class LoginServlet extends HttpServlet {
 
                     Cookie message = new Cookie("message", "Welcome");
                     response.addCookie(message);
-                    response.sendRedirect("/profile");
+                    response.sendRedirect("/profile.jsp");//this is the .jsp it requires
 
                 }else{
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/login");
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/login");
                     PrintWriter out = response.getWriter();
                     System.out.println("<font color=red> Either username or password is wrong.</font>");
                     response.sendRedirect("/login");
