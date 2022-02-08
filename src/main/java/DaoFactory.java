@@ -1,3 +1,5 @@
+import javax.servlet.jsp.jstl.core.Config;
+
 public class DaoFactory {
     private static Ads adsDao;
 
@@ -7,4 +9,5 @@ public class DaoFactory {
         }
         return adsDao;
     }
+
 }
