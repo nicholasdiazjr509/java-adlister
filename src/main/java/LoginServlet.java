@@ -1,21 +1,24 @@
-
+import javax.servlet.http.Cookie;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    private final String username = "user";
+    private final String password = "password";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        if(request.getSession().getAttribute("user") != null{
+        if(request.getSession().getAttribute("user") != null){
             response.sendRedirect("/profile");
         }
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
     @Override
@@ -25,11 +28,25 @@ public class LoginServlet extends HttpServlet {
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
 
-                User user = DaoFactory.getUsersDao().findByUsername(username);
+//                User user = DaoFactory.findByUsername(username);
 
-                if(username.equals("admin") && password.equals("password")){
+                if(this.username.equals(username) && this.password.equals(password)){
+                    HttpSession oldSession = request.getSession(false);
+                    if(oldSession != null){
+                        oldSession.invalidate();
+                    }
+                  HttpSession newSession = request.getSession(true);
+                    newSession.setMaxInactiveInterval(60);
+                    //session expiry 5 minutos
+
+                    Cookie message = new Cookie("message", "Welcome");
+                    response.addCookie(message);
                     response.sendRedirect("/profile");
+
                 }else{
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/login");
+                    PrintWriter out = response.getWriter();
+                    System.out.println("<font color=red> Either username or password is wrong.</font>");
                     response.sendRedirect("/login");
                 }
             }
