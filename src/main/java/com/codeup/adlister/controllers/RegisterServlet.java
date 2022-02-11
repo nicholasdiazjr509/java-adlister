@@ -23,6 +23,7 @@ public class RegisterServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
         // TODONE: ensure the submitted information is valid
         // TODO: create a new user based off of the submitted information
