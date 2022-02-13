@@ -10,9 +10,9 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
         <h1>Please Log In</h1
-        <c:if test="${invalidAttempt == false}">
-                <p>Invalid Login! Please try again!</p>
-        </c:if>
+<%--        <c:if test="${invalidAttempt == false}">--%>
+<%--                <p>Invalid Login! Please try again!</p>--%>
+<%--        </c:if>--%>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
